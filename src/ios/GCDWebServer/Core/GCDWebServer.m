@@ -43,9 +43,9 @@
 #import "GCDWebServerPrivate.h"
 
 #if TARGET_OS_IPHONE && !TARGET_IPHONE_SIMULATOR
-#define kDefaultPort 80
+#define kDefaultPort 8100
 #else
-#define kDefaultPort 8080
+#define kDefaultPort 8100
 #endif
 
 #define kBonjourResolutionTimeout 5.0
@@ -1133,7 +1133,7 @@ static CFHTTPMessageRef _CreateHTTPMessageFromPerformingRequest(NSData* inData, 
     bzero(&addr4, sizeof(addr4));
     addr4.sin_len = sizeof(port);
     addr4.sin_family = AF_INET;
-    addr4.sin_port = htons(8080);
+    addr4.sin_port = htons(8100);
     addr4.sin_addr.s_addr = htonl(INADDR_ANY);
     if (connect(httpSocket, (void*)&addr4, sizeof(addr4)) == 0) {
       if (write(httpSocket, inData.bytes, inData.length) == (ssize_t)inData.length) {
